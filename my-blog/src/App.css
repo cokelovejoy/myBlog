@@ -1,0 +1,14 @@
+@import '~antd/dist/antd.css';
+
+/* .App {
+} */
+.App {
+  height: 100vh;
+  background: #ececec;
+  text-align: center;
+  display: flex;
+}
+
+#site-card-border-less-wrapper {
+  margin:auto;
+}
