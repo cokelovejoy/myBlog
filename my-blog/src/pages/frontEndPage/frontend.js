@@ -1,7 +1,9 @@
 import "./static/pageCss.css";
 import React, { Component } from "react";
 import { Layout, Input, Menu, Card, Image } from "antd";
-import { Link } from "react-router-dom";
+import { Switch, Link, Route } from "react-router-dom";
+import CatalogueContent from "./component/catalogue.js";
+import PersonalInfo from "./component/personalInfo.js";
 const { Search } = Input;
 const { Header, Footer, Sider, Content } = Layout;
 const onSearch = (value) => console.log("value", value);
@@ -25,9 +27,15 @@ export default class FrontEnd extends Component {
             </div>
             <div id="menu">
               <Menu>
-                <Menu.Item><Link to="/">首页</Link></Menu.Item>
-                <Menu.Item><Link to="/">目录 </Link></Menu.Item>
-                <Menu.Item><Link to="/">个人信息</Link></Menu.Item>
+                <Menu.Item>
+                  <Link to="/frontend">首页</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/frontend/catalogue">目录</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/frontend/personalInfo">个人信息</Link>
+                </Menu.Item>
               </Menu>
             </div>
             <div id="personalInfo">
@@ -43,8 +51,25 @@ export default class FrontEnd extends Component {
             </div>
           </Sider>
           <Layout>
-            <Content>Content</Content>
-            <Footer>Footer</Footer>
+            <Content>
+              <Switch>
+                <Route exact path="/frontend">first page</Route>
+                <Route
+                  path="/frontend/catalogue"
+                  component={CatalogueContent}
+                ></Route>
+                <Route
+                  path="/frontend/personalInfo"
+                  component={PersonalInfo}
+                ></Route>
+              </Switch>
+            </Content>
+            <Footer>
+              <a href="http://www.beian.miit.gov.cn" target="_blank">
+                湘ICP备20004873
+              </a>
+              <Image src={require("../../assets/image/beian.png")}></Image>
+            </Footer>
           </Layout>
         </Layout>
       </Layout>
